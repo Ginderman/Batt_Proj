@@ -13,6 +13,7 @@ export default function CreateCustomArmy () {
         const storedArmy = localStorage.getItem("temp")
         if(storedArmy){
             alert(storedArmy)
+            alert("storedArmy")
         }
     }, [])
     return(
