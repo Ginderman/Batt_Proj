@@ -1,0 +1,58 @@
+/* body {
+    background-image: url('./src/assets/BackgroundMain.jpg'), url('./src/assets/Gemini_Generated_Marauder.jpg'), url("./src/assets/Gemini_Generated_Image_3456.jpg"),  url("./src/assets/Gemini_Generated_Image_7162.jpg");
+    background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
+    background-size: 29% 50%, 29% 50%, 29% 50%, 29% 50%;
+    background-position: left top, right top, left bottom, right bottom;
+    
+} */
+
+
+.grid-container{
+    display: grid;
+    grid-template-rows: auto auto;/* Two rows */
+    grid-template-columns: 1fr 2fr 1fr; /* Three colums with middle column twice as big as the side columns */
+    
+    grid-template-areas:
+    "aside1 main aside3"
+    "aside2 main aside4";
+
+    gap: 10px; /* Space between grid items */
+
+    height: 100vh;
+    width:100%
+}
+
+.main{
+    grid-area: main;
+}
+
+.aside1{
+    grid-area: aside1;
+    background-image: url('./src/assets/BackgroundMain.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.aside2{
+    grid-area: aside2;
+    background-image: url('./src/assets/Gemini_Generated_Marauder.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.aside3{
+    grid-area: aside3;
+    background-image: url("./src/assets/Gemini_Generated_Image_3456.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.aside4{
+    grid-area: aside4;
+    background-image: url("./src/assets/Gemini_Generated_Image_7162.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+

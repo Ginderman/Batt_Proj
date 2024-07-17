@@ -1,0 +1,51 @@
+.StockBox{
+    display: inline ;
+}
+
+
+
+.StockMechBox {
+    display: inline block;
+    height: 600px ;
+    overflow-y: auto;
+}
+
+.StockMechCard{
+    width: 20%;
+    height: 20%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    margin-right : 2%;
+    background-color: grey;
+    border: solid red;
+    transition: 0.75s;
+    display:inline-block
+}
+.StockMechCard:hover{
+    background-color: darkblue;
+    transition: 0.75s;
+    
+}
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(73, 52, 52, 0.02); /* semi-transparent background */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    transition: 1s;
+}
+
+.popup-content {
+    background: grey;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    width: 48%;
+    height: 65%;
+    overflow-y: auto; /* Scroll if content overflows */
+}
