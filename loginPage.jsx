@@ -15,10 +15,10 @@ export default function LoginPage({updateCurrentPage, updateUserState} ){
     return(
         popUpState && (
             <div className="LoginPageBackground" onClick={changePopUpState}>
-                <div className="LoginPagePopup">
+                <div className="LoginPagePopup" onClick={(e) => e.stopPropagation()}>
                     <p>Hello World!</p>
                    
-                    <button onClick={() => {updateUserState(true)}}>Login</button>
+                    <button onClick={() => {updateUserState(true); }}>Login</button>
                 </div>
 
              </div>

@@ -4,8 +4,35 @@
 }
 .addArmyButton {
     float: left;
-    background-image: url(./src/assets/plusUltra.jpg);
+    background-image: url("https://cfw.sarna.net/wiki/images/a/af/UrbanMech_RGilClan_v02.png?timestamp=20210516002949");
     background-size: 130px 130px;
     height: 130px;  
     width: 130px;
+}
+
+.ccaCreatePageBackground {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(24, 25, 38, 0.4); /* semi-transparent background */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    
+}
+
+.ccaCreatePagePopup{
+    position: absolute;
+    top: 15%;
+    left: 25.5%;
+    width: 49%;
+    height: 75%;
+    background: grey;
+    border-radius: 5px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    
+
 }
