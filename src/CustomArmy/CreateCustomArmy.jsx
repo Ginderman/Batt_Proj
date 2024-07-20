@@ -6,15 +6,15 @@ export default function CreateCustomArmy () {
     const[hasArmies, sethasArmies] = useState(false)
     const[ccaCreateState, setCcaCreateState]= useState(false)
 
-    // const SaveArmy =() => {
-    //     localStorage.setItem("temp", "Test")
+    // const SaveArmy =(army) => {
+    //     localStorage.setItem("temp", JSON.stringify(army))
     // }
 
     // useEffect(() => {
+
     //     const storedArmy = localStorage.getItem("temp")
     //     if(storedArmy){
-    //         alert(storedArmy)
-    //         alert("storedArmy")
+    //         const convertedArmy = JSON.parse(storedArmy)
     //     }
     // }, [])
     return(

@@ -1,6 +1,6 @@
 import './stockMechBox.css'
 import { useState, useEffect } from 'react';
-import MechDisplay from './mechdisplay';
+import MechDisplay from '../MechDisplay/mechdisplay';
 
 
 export default function StockMechBox ({stockMechArray}) {

@@ -1,10 +1,10 @@
 import { useState, useEffect, useRef } from 'react'
 import { CookiesProvider, useCookies } from 'react-cookie';
-import StockMechNavbar from '../StockMechNavbar'
-import StockMechBox from '../StockMechBox';
-import CreateCustomArmy from '../CreateCustomArmy';
+import StockMechNavbar from './NavBar/MechNavbar';
+import StockMechBox from './StockMech/StockMechBox';
+import CreateCustomArmy from './CustomArmy/CreateCustomArmy';
 import { MechArray3025 } from "../Utility/3025DefaultMechs";
-import LoginPage from '../loginPage';
+import LoginPage from './Login/loginPage';
 import './App.css'
 import axios from 'axios';
 import Stack from '@mui/material/Stack'

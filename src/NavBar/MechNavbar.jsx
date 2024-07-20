@@ -1,6 +1,6 @@
 import "./MechNavbar.css"
 import { useState, useRef, useEffect } from "react"
-import { MechArray3025 } from "./Utility/3025DefaultMechs";
+import { MechArray3025 } from "../../Utility/3025DefaultMechs";
 
 
 export default function StockMechNavbar ({userState, updateLoginStateFunc, currentPage, updateCurrentPage}) {
