@@ -27,6 +27,7 @@ export default function CreateCustomArmy () {
                 <div className='ccaCreatePageBackground' onClick={() => {setCcaCreateState(false)}}>
                     <div className='ccaCreatePagePopup' onClick={(e) => e.stopPropagation()}>
                         <form encType="multipart/form-data" onSubmit={SaveArmy}>
+                        
                             <p>Create your custom army!</p>
                             <label for="NameInputBox">Enter a company name </label>
                             <input type="text" id='NameInputBox' className='NameInputBox'/>
