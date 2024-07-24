@@ -4,6 +4,8 @@ import './CreateCustomArmy.css'
 export default function CreateCustomArmy () {
 
     const[hasArmies, sethasArmies] = useState([]);
+    const[currentArmy, setCurrentArmy] = useState([]);
+    const[currentArmyEditeState, setCurrentArmyEditeState]= useState(false);
     const[ccaCreateState, setCcaCreateState]= useState(false);
 
     const saveArmy =(e) => {
@@ -45,14 +47,21 @@ export default function CreateCustomArmy () {
             
         }
     }, [])
+
+    const setCurrentArmyFunc = (army) =>{
+        setCurrentArmyEditeState(true)
+        console.log(army)
+        setCurrentArmy(army)
+        
+    }
     
     return(
         <div className='ccaBox'>
-             {!ccaCreateState && (
+             {!ccaCreateState && !currentArmyEditeState && (
                 <>
                 {(hasArmies.length > 0) && (
                     hasArmies.map((army,index) => {
-                        return <div>Army!</div>
+                        return <div onClick={() => setCurrentArmyFunc(army)}><img src={army.CompanyImage}></img></div>
                     })
 
 
@@ -65,6 +74,20 @@ export default function CreateCustomArmy () {
                  </div>
                  </>
                 )
+            }{currentArmyEditeState && (
+                <div className='editArmyBackground' onClick={() => {setCurrentArmyEditeState(false)}}>
+                    <div className='editArmyCreatePagePopup' onClick={(e) => e.stopPropagation()}>
+                        <form encType="multipart/form-data" onSubmit={saveArmy}>
+
+                            <p>EDIT YOUR CUSTOM ARMY!</p>
+                            <label htmlFor='armyName'>Enter a new army name </label>
+                            <input type='text' id='armyName' placeholder={currentArmy.Name}></input>
+                            <br></br>
+                            <label htmlFor='armyPoints'>Enter a new army point total </label>
+                            <input type='number'id='armyPoints' placeholder={currentArmy.BattlePointTotal}></input>
+                        </form>
+                    </div>
+                </div>)
             }
             {ccaCreateState && (
                 <div className='ccaCreatePageBackground' onClick={() => {setCcaCreateState(false)}}>
@@ -80,11 +103,8 @@ export default function CreateCustomArmy () {
                             <input type="file" id='UploadImage' className='UploadImage'  accept="image/jpeg,image/gif,image/png,application/pdf,image/x-eps"/>
                             <button type="submit">Submit</button> 
                         </form>
-                       
-
                     </div>
                 </div>)
-
             }
 
         </div>
