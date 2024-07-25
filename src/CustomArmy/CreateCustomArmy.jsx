@@ -99,8 +99,8 @@ export default function CreateCustomArmy () {
                             <input type="text" id='NameInputBox' className='NameInputBox'/>
                             <label htmlFor="BVInputBox">Enter a Battle Point Total </label>
                             <input type="number" id='BVInputBox' className='BVInputBox'/>
-                            <label htmlFor="UploadImage">Upload company image </label>
-                            <input type="file" id='UploadImage' className='UploadImage'  accept="image/jpeg,image/gif,image/png,application/pdf,image/x-eps"/>
+                            <label htmlFor="UploadImage">Link to company image </label>
+                            <input type="string" id='UploadImage' className='UploadImage'  />
                             <button type="submit">Submit</button> 
                         </form>
                     </div>
