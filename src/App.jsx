@@ -106,16 +106,8 @@ function App() {
       </div> 
       : 
       null
-
     }
-      {currentPage === "vca"? 
-    <div>
-       <p>VIEW CUSTOM ARMIES</p>
-      </div> 
-      : 
-      null
-
-    }
+    
     {currentPage === "login"? 
     <LoginPage updateCurrentPage={setCurrentPage} updateUserState={setUserState}></LoginPage> 
       : 

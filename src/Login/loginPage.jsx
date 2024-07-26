@@ -11,14 +11,29 @@ export default function LoginPage({updateCurrentPage, updateUserState} ){
 
     }
 
+    const loginFunc =(e) => {
+        e.preventDefault();
+        const userName = e.target[0].value;
+        const passWord = e.target[1].value;
+        console.log(userName + " " + passWord)
+        updateUserState(true)
+        changePopUpState()
+
+    }
+
 
     return(
         popUpState && (
             <div className="LoginPageBackground" onClick={changePopUpState}>
                 <div className="LoginPagePopup" onClick={(e) => e.stopPropagation()}>
-                    <p>Hello World!</p>
-                   
-                    <button onClick={() => {updateUserState(true); changePopUpState() }}>Login</button>
+                    <form onSubmit={loginFunc}>
+                        <label htmlFor="usernameBox">Enter a username: </label>
+                        <input type="text" placeholder="Username"></input>
+                        <label htmlFor="passwordBox">Enter a password: </label>
+                        <input type="text" placeholder="Password"></input>
+                        <button type="submit">Login</button> 
+                        
+                    </form>
                 </div>
 
              </div>

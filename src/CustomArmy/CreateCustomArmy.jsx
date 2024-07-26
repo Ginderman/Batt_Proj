@@ -63,9 +63,6 @@ export default function CreateCustomArmy () {
                     hasArmies.map((army,index) => {
                         return <div onClick={() => setCurrentArmyFunc(army)}><img src={army.CompanyImage}></img></div>
                     })
-
-
-
                 )}
 
                 <div>
