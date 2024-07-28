@@ -1,5 +1,6 @@
 import "./LoginPage.css"
 import { useState } from "react";
+import axios from "axios";
 
 export default function LoginPage({updateCurrentPage, updateUserState} ){
 
@@ -15,7 +16,8 @@ export default function LoginPage({updateCurrentPage, updateUserState} ){
         e.preventDefault();
         const userName = e.target[0].value;
         const passWord = e.target[1].value;
-        console.log(userName + " " + passWord)
+        // axios.post() //TO DO LOGIN WITH AXIOS TO THE BACKEND
+        
         updateUserState(true)
         changePopUpState()
 
