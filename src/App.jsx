@@ -5,6 +5,7 @@ import StockMechBox from './StockMech/StockMechBox';
 import CreateCustomArmy from './CustomArmy/CreateCustomArmy';
 import { MechArray3025 } from "../Utility/3025DefaultMechs";
 import LoginPage from './Login/loginPage';
+import RegisterPage from './Register/registerPage';
 import './App.css'
 import axios from 'axios';
 import Stack from '@mui/material/Stack'
@@ -110,6 +111,12 @@ function App() {
     
     {currentPage === "login"? 
     <LoginPage updateCurrentPage={setCurrentPage} updateUserState={setUserState}></LoginPage> 
+      : 
+      null
+
+    }
+     {currentPage === "register"? 
+    <RegisterPage updateCurrentPage={setCurrentPage} updateUserState={setUserState}></RegisterPage> 
       : 
       null
 

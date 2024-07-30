@@ -1,8 +1,8 @@
-import "./LoginPage.css"
+import "./registerPage.css"
 import { useState } from "react";
 import axios from "axios";
 
-export default function LoginPage({updateCurrentPage, updateUserState} ){
+export default function RegisterPage({updateCurrentPage, updateUserState} ){
 
     const [popUpState, setPopUpState] = useState(true);
 
@@ -12,12 +12,11 @@ export default function LoginPage({updateCurrentPage, updateUserState} ){
 
     }
 
-    const loginFunc =(e) => {
+    const registerFunc =(e) => {
         e.preventDefault();
         const userName = e.target[0].value;
         const passWord = e.target[1].value;
         // axios.post() //TO DO LOGIN WITH AXIOS TO THE BACKEND
-        
         updateUserState(true)
         changePopUpState()
 
@@ -31,9 +30,10 @@ export default function LoginPage({updateCurrentPage, updateUserState} ){
 
     return(
         popUpState && (
-            <div className="LoginPageBackground" onClick={changePopUpState}>
-                <div className="LoginPagePopup" onClick={(e) => e.stopPropagation()}>
-                    <form onSubmit={loginFunc}>
+            <div className="RegisterPageBackground" onClick={changePopUpState}>
+                <div className="RegisterPagePopup" onClick={(e) => e.stopPropagation()}>
+                    YESSSSS!
+                    {/* <form onSubmit={loginFunc}>
                         <label htmlFor="usernameBox">Enter a username: </label>
                         <input type="text" placeholder="Username"></input>
                         <label htmlFor="passwordBox">Enter a password: </label>
@@ -42,7 +42,7 @@ export default function LoginPage({updateCurrentPage, updateUserState} ){
 
                         
                     </form>
-                    <button onClick={register}>Register Account</button>
+                    <button onClick={register}>Register Account</button> */}
                 </div>
 
              </div>
