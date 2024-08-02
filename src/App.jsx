@@ -15,6 +15,7 @@ function App() {
   const [cookies, setCookie] = useCookies(['user'])
   const [userState, setUserState] = useState(false)
   const [currentPage, setCurrentPage] = useState('stockMechs');
+  const [addable, setAddable] = useState(false);
   
   const [pageState, setPageState] = useState('')
   const [stockMechArray, setStockMechArray] = useState([])
@@ -96,14 +97,14 @@ function App() {
     }
     {currentPage === "stockMechs"? 
       <div>
-       <StockMechBox stockMechArray={stockMechArray}></StockMechBox>
+       <StockMechBox stockMechArray={stockMechArray} ></StockMechBox>
       </div>
       : 
       null
     }
       {currentPage === "cca"? 
     <div>
-      <CreateCustomArmy></CreateCustomArmy>
+      <CreateCustomArmy stockMechArray={stockMechArray}></CreateCustomArmy>
       </div> 
       : 
       null

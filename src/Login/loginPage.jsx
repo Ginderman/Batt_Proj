@@ -14,12 +14,22 @@ export default function LoginPage({updateCurrentPage, updateUserState} ){
 
     const loginFunc =(e) => {
         e.preventDefault();
-        const userName = e.target[0].value;
-        const passWord = e.target[1].value;
-        // axios.post() //TO DO LOGIN WITH AXIOS TO THE BACKEND
+        const user = {
+            userName: e.target[0].value,    
+            passWord: e.target[1].value
+        }
+        const savedData = localStorage.getItem("user")
+        if(savedData){
+            const parsedData = JSON.parse(savedData);
+            console.log(parsedData)
+            if(user.userName === parsedData.userName && user.passWord ===parsedData.passWord){
+                console.log("success!")
+                 updateUserState(true)
+                 changePopUpState()
+            }
+        }
         
-        updateUserState(true)
-        changePopUpState()
+        // axios.post() //TO DO LOGIN WITH AXIOS TO THE BACKEND
 
     }
 

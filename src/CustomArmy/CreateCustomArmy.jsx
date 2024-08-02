@@ -1,12 +1,15 @@
 import { useEffect, useState } from 'react'
 import './CreateCustomArmy.css'
+import StockMechBox from '../StockMech/StockMechBox';
 
-export default function CreateCustomArmy () {
+export default function CreateCustomArmy ({stockMechArray}) {
 
     const[hasArmies, sethasArmies] = useState([]);
     const[currentArmy, setCurrentArmy] = useState([]);
     const[currentArmyEditeState, setCurrentArmyEditeState]= useState(false);
+    const[addMechsState, setAddMechsState] = useState(false);
     const[ccaCreateState, setCcaCreateState]= useState(false);
+    const addable = true;
 
     const saveArmy =(e) => {
         e.preventDefault();
@@ -18,6 +21,9 @@ export default function CreateCustomArmy () {
         // console.log(JSON.stringify(army))
 
         localStorage.setItem("temp", JSON.stringify(army))
+        setCcaCreateState(false);
+        setCurrentArmyEditeState(false)
+        setAddMechsState(true)
     }
 
     const getTempStorage = () => {
@@ -35,18 +41,18 @@ export default function CreateCustomArmy () {
     useEffect(() => {
 
         const storedArmy = localStorage.getItem("temp")
-        if(storedArmy){
-            const convertedArmy = JSON.parse(storedArmy)
-            console.log("Army")
-            console.log(convertedArmy)
-            sethasArmies(prevState => {
-                let newArr = [...prevState]
-                newArr.push(convertedArmy)
-                return newArr
-            })
-            
-        }
-    }, [])
+            if(storedArmy){
+                const convertedArmy = JSON.parse(storedArmy)
+                console.log("Army")
+                console.log(convertedArmy)
+                sethasArmies(prevState => {
+                    let newArr = [...prevState]
+                    newArr.push(convertedArmy)
+                    return newArr
+                })
+                
+            }
+        }, [])
 
     const setCurrentArmyFunc = (army) =>{
         setCurrentArmyEditeState(true)
@@ -57,7 +63,7 @@ export default function CreateCustomArmy () {
     
     return(
         <div className='ccaBox'>
-             {!ccaCreateState && !currentArmyEditeState && (
+             {!ccaCreateState && !currentArmyEditeState && !addMechsState && (
                 <>
                 {(hasArmies.length > 0) && (
                     hasArmies.map((army,index) => {
@@ -100,6 +106,14 @@ export default function CreateCustomArmy () {
                             <input type="string" id='UploadImage' className='UploadImage'  />
                             <button type="submit">Submit</button> 
                         </form>
+                    </div>
+                </div>)
+            }
+            {addMechsState && (
+                <div className='addMechBackground' onClick={() => {setAddMechsState(false)}}>
+                    <div className='addMechPagePopup' onClick={(e) => e.stopPropagation()}>
+                        <div>Add Mechs to Army</div>
+                        <StockMechBox stockMechArray={stockMechArray} addable={addable}></StockMechBox>
                     </div>
                 </div>)
             }

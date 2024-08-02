@@ -11,38 +11,42 @@ export default function RegisterPage({updateCurrentPage, updateUserState} ){
         updateCurrentPage('stockMechs')
 
     }
-
-    const registerFunc =(e) => {
-        e.preventDefault();
-        const userName = e.target[0].value;
-        const passWord = e.target[1].value;
-        // axios.post() //TO DO LOGIN WITH AXIOS TO THE BACKEND
-        updateUserState(true)
-        changePopUpState()
-
-    }
-
-    const register =() => {
+    function sendToLogin() {
         setPopUpState(false)
-        updateCurrentPage('register')
+        updateCurrentPage('login')
+
     }
 
+    const createAccount =(e) => {
+        e.preventDefault();
+        const user = {
+            userName: e.target[0].value,    
+            passWord: e.target[1].value
+        }
+       
+        localStorage.setItem("user", JSON.stringify(user))
+        // axios.post() //TO DO LOGIN WITH AXIOS TO THE BACKEND
+        sendToLogin()
+
+    }
+
+ 
 
     return(
         popUpState && (
             <div className="RegisterPageBackground" onClick={changePopUpState}>
                 <div className="RegisterPagePopup" onClick={(e) => e.stopPropagation()}>
-                    YESSSSS!
-                    {/* <form onSubmit={loginFunc}>
+                    
+                    <form onSubmit={createAccount}>
                         <label htmlFor="usernameBox">Enter a username: </label>
                         <input type="text" placeholder="Username"></input>
                         <label htmlFor="passwordBox">Enter a password: </label>
                         <input type="text" placeholder="Password"></input>
-                        <button type="submit">Login</button> 
+                        <button type="submit">Register</button> 
 
                         
                     </form>
-                    <button onClick={register}>Register Account</button> */}
+                   
                 </div>
 
              </div>

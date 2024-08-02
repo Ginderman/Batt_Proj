@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import MechDisplay from '../MechDisplay/mechdisplay';
 
 
-export default function StockMechBox ({stockMechArray}) {
+export default function StockMechBox ({stockMechArray, addable}) {
     const [stockArrayState, setStockArrayState] = useState([])
     const [popupState, setPopupState] = useState(false)
     const [selectedMech, setSelectedMech] = useState("")
@@ -33,9 +33,13 @@ export default function StockMechBox ({stockMechArray}) {
     return (
         <div className='StockBox'>
             <div className='StockMechBoxTitle' onClick={showArray}>Stock Mechs</div>
+            
             <div className='StockMechBox'> { stockArrayState.map((mech) => 
+                
+
                 {return (
                         <div className='StockMechCard' onClick={() => showMech(mech)}>
+                             
                             <div className="container">
                                 <div className='StockMechCardName' >{mech.Name}</div>
                                 <div className='StockMechCardValue' >Point Cost: {mech.BattleValue}</div>
@@ -43,7 +47,8 @@ export default function StockMechBox ({stockMechArray}) {
                             {popupState && (
                             <div className='popup-overlay' onClick={closePopup}>
                                  <div className='popup-content' onClick={(e) => e.stopPropagation()}>
-                                    <MechDisplay mech={selectedMech}></MechDisplay>
+                                    <MechDisplay mech={selectedMech}  addable={addable}></MechDisplay>
+                                    {addable !== undefined? <p>TEXT</p> : null}
                                     <button onClick={closePopup}>Close</button>
                                 </div>
                             </div>
