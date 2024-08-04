@@ -28,6 +28,8 @@ export default function StockMechBox ({stockMechArray, addable}) {
         console.log(stockArrayState);
     };
 
+    //{addMechFunc !== undefined ? addMechFunc(currentArmy) : null}
+
 
 
     return (
@@ -48,7 +50,7 @@ export default function StockMechBox ({stockMechArray, addable}) {
                             <div className='popup-overlay' onClick={closePopup}>
                                  <div className='popup-content' onClick={(e) => e.stopPropagation()}>
                                     <MechDisplay mech={selectedMech}  addable={addable}></MechDisplay>
-                                    {addable !== undefined? <p>TEXT</p> : null}
+                                    {addable !== undefined? <button onClick={addMechFunc}>Add</button> : null}
                                     <button onClick={closePopup}>Close</button>
                                 </div>
                             </div>
