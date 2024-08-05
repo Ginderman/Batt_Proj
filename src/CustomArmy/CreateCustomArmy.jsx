@@ -33,23 +33,23 @@ export default function CreateCustomArmy ({stockMechArray}) {
     }
     const editSavedArmy =(e) => {
         //TODO
-        // e.preventDefault();
-        // let army = {
-        //     Name: e.target[0].value,
-        //     BattlePointTotal : e.target[1].value,
-        //     CompanyImage: e.target[2].value
-        //  }
-        // let copyArmy = [...hasArmies]
-        // copyArmy.push(army)
-        // //Save to db and state
-        // localStorage.setItem("temp", JSON.stringify(copyArmy))
-        // sethasArmies(prevState => {
-        //     let newArr = [...prevState]
-        //     newArr.push(army)
-        //     return newArr
-        // })
-        // setCcaCreateState(false);
-        // setCurrentArmyEditeState(false)
+        e.preventDefault();
+        let army = {
+            Name: e.target[0].value,
+            BattlePointTotal : e.target[1].value,
+            CompanyImage: e.target[2].value
+         }
+        let copyArmy = [...hasArmies]
+        copyArmy.push(army)
+        //Save to db and state
+        localStorage.setItem("temp", JSON.stringify(copyArmy))
+        sethasArmies(prevState => {
+            let newArr = [...prevState]
+            newArr.push(army)
+            return newArr
+        })
+        setCcaCreateState(false);
+        setCurrentArmyEditeState(false)
     }
 
     const getTempStorage = () => {
