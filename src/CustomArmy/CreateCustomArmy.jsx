@@ -6,6 +6,7 @@ export default function CreateCustomArmy ({stockMechArray}) {
 
     const[hasArmies, sethasArmies] = useState([]);
     const[currentArmy, setCurrentArmy] = useState([]);
+    const[currentArmyIndex, setCurrentArmyIndex] = useState(0);
     const[currentArmyEditeState, setCurrentArmyEditeState]= useState(false);
     const[viewCurrentArmyState, setViewCurrentArmyState]= useState(false);
     const[addMechsState, setAddMechsState] = useState(false);
@@ -32,24 +33,30 @@ export default function CreateCustomArmy ({stockMechArray}) {
         setCurrentArmyEditeState(false)
     }
     const editSavedArmy =(e) => {
-        //TODO
         e.preventDefault();
-        let army = {
+        let newArmy = {
             Name: e.target[0].value,
             BattlePointTotal : e.target[1].value,
             CompanyImage: e.target[2].value
          }
-        let copyArmy = [...hasArmies]
-        copyArmy.push(army)
-        //Save to db and state
-        localStorage.setItem("temp", JSON.stringify(copyArmy))
-        sethasArmies(prevState => {
+
+         sethasArmies(prevState => {
             let newArr = [...prevState]
-            newArr.push(army)
+            newArr[currentArmyIndex]= newArmy
             return newArr
         })
-        setCcaCreateState(false);
-        setCurrentArmyEditeState(false)
+       
+
+        //Save to db and state
+        // localStorage.setItem("temp", JSON.stringify(copyArmy))
+        // sethasArmies(prevState => {
+        //     let newArr = [...prevState]
+        //     newArr.push(army)
+        //     return newArr
+        // })
+        // setCcaCreateState(false);
+         setCurrentArmy(newArmy)
+         setCurrentArmyEditeState(false)
     }
 
     const getTempStorage = () => {
@@ -84,9 +91,15 @@ export default function CreateCustomArmy ({stockMechArray}) {
             }
         }, [])
 
-    const setCurrentArmyFunc = (army) =>{
+    const setCurrentArmyFunc = (army, index) =>{
         setViewCurrentArmyState(true)
         setCurrentArmy(army)
+        setCurrentArmyIndex(index)
+    }
+
+    const addMech = () => {
+    setAddMechsState(true)
+
     }
     
     return(
@@ -95,7 +108,7 @@ export default function CreateCustomArmy ({stockMechArray}) {
                 <>
                 {(hasArmies.length > 0) && (
                     hasArmies.map((army,index) => {
-                        return <div onClick={() => setCurrentArmyFunc(army)}><img src={army.CompanyImage}></img>
+                        return <div onClick={() => setCurrentArmyFunc(army, index)}><img src={army.CompanyImage}></img>
                         <p>{army.Name}</p>
                         </div>
                     })
@@ -129,8 +142,12 @@ export default function CreateCustomArmy ({stockMechArray}) {
                             <label htmlFor='armyName'>Army Name: </label>
                             <h3>{currentArmy.Name}</h3>
                             <br></br>
-                            <label htmlFor='armyPoints'>Enter a new army point total </label>
-                            <input type='number'id='armyPoints' placeholder={currentArmy.BattlePointTotal}></input>
+                            <label htmlFor='armyName'>Army Points: </label>
+                            <h3>{currentArmy.BattlePointTotal}</h3>
+
+                            <button onClick={() => {setCurrentArmyEditeState(true)}}>Edit Company</button>
+                            <button onClick= {addMech}>Add Mechs</button>
+                            <button>Delete Company</button>
 
                        
                     </div>
@@ -141,12 +158,13 @@ export default function CreateCustomArmy ({stockMechArray}) {
                     <div className='editArmyCreatePagePopup' onClick={(e) => e.stopPropagation()}>
                         <form encType="multipart/form-data" onSubmit={editSavedArmy}>
 
-                            <p>EDIT YOUR CUSTOM ARMY!</p>
+                            <p>EDIT YOUR CUSTOM COMPANY!</p>
                             <label htmlFor='armyName'>Enter a new army name </label>
                             <input type='text' id='armyName' placeholder={currentArmy.Name}></input>
                             <br></br>
                             <label htmlFor='armyPoints'>Enter a new army point total </label>
                             <input type='number'id='armyPoints' placeholder={currentArmy.BattlePointTotal}></input>
+                            <button type='submit'>Update Company</button>
 
                         </form>
                     </div>
