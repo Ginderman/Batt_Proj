@@ -101,6 +101,24 @@ export default function CreateCustomArmy ({stockMechArray}) {
     setAddMechsState(true)
 
     }
+
+    const addToArmy = (mech, index) => {
+        console.log(mech);
+        const storedArmies = localStorage.getItem("temp");
+        // if(storedArmies){
+        //     const convertedArmy = JSON.parse(storedArmies)
+        //     if (convertedArmy[index].Mechs.length !== 0) {
+        //         convertedArmy[index].Mechs.push(mech.name)
+        //     }
+        //     else{
+        //         convertedArmy[index].Mechs = [];
+        //         convertedArmy[index].Mechs.push(mech.name)
+        //     }
+        // }
+        console.log(storedArmies);
+
+
+    }
     
     return(
         <div className='ccaBox'>
@@ -174,7 +192,7 @@ export default function CreateCustomArmy ({stockMechArray}) {
                 <div className='addMechBackground' onClick={() => {setAddMechsState(false)}}>
                     <div className='addMechPagePopup' onClick={(e) => e.stopPropagation()}>
                         <div>Add Mechs to Army</div>
-                        <StockMechBox stockMechArray={stockMechArray} addable={addable}  ></StockMechBox>
+                        <StockMechBox stockMechArray={stockMechArray} addable={addable} addMechFunc={addToArmy} currentArmyIndex= {currentArmyIndex}  ></StockMechBox>
                     </div>
                 </div>)
             }
