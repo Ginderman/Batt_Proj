@@ -105,18 +105,17 @@ export default function CreateCustomArmy ({stockMechArray}) {
     const addToArmy = (mech, index) => {
         console.log(mech);
         const storedArmies = localStorage.getItem("temp");
-        // if(storedArmies){
-        //     const convertedArmy = JSON.parse(storedArmies)
-        //     if (convertedArmy[index].Mechs.length !== 0) {
-        //         convertedArmy[index].Mechs.push(mech.name)
-        //     }
-        //     else{
-        //         convertedArmy[index].Mechs = [];
-        //         convertedArmy[index].Mechs.push(mech.name)
-        //     }
-        // }
-        console.log(storedArmies);
-
+        if(storedArmies){
+            const convertedArmy = JSON.parse(storedArmies)
+            if (convertedArmy[index].Mechs.length !== 0) {
+                convertedArmy[index].Mechs.push(mech.name)
+            }
+            else{
+                convertedArmy[index].Mechs = [];
+                convertedArmy[index].Mechs.push(mech.name)
+            }
+        }
+        //TODO FIGURE OUT WHY INDEX IS NOT WORKING.
 
     }
     
