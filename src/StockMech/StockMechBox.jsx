@@ -50,7 +50,7 @@ export default function StockMechBox ({stockMechArray, addable, addMechFunc, cur
                             <div className='popup-overlay' onClick={closePopup}>
                                  <div className='popup-content' onClick={(e) => e.stopPropagation()}>
                                     <MechDisplay mech={selectedMech}  addable={addable}></MechDisplay>
-                                    {addable !== undefined? <button onClick={() => {addMechFunc(selectedMech)}}>Add To Army</button> : null}
+                                    {addable !== undefined? <button onClick={() => {addMechFunc(selectedMech, currentArmyIndex)}}>Add To Army</button> : null}
                                     <button onClick={closePopup}>Close</button>
                                 </div>
                             </div>

@@ -70,19 +70,17 @@ export default function CreateCustomArmy ({stockMechArray}) {
     }
 
     useEffect(() => {
+
         const storedArmy = localStorage.getItem("temp")
             if(storedArmy){
                 const convertedArmy = JSON.parse(storedArmy)
                
                 if(Array.isArray(convertedArmy)){
-                    sethasArmies(prevState => {
-                        let newArr = [...prevState, ...convertedArmy]
-                        return newArr
-                    })
+                    sethasArmies(convertedArmy)
                 }
                 else if(typeof convertedArmy === "object"){
                     sethasArmies(prevState => {
-                        let newArr = [...prevState]
+                        let newArr = []
                         newArr.push(convertedArmy)
                         return newArr
                     })
@@ -103,19 +101,24 @@ export default function CreateCustomArmy ({stockMechArray}) {
     }
 
     const addToArmy = (mech, index) => {
-        console.log(mech);
+        //console.log(mech);
         const storedArmies = localStorage.getItem("temp");
+       // console.log(index)
+        //console.log(storedArmies)
         if(storedArmies){
             const convertedArmy = JSON.parse(storedArmies)
-            if (convertedArmy[index].Mechs.length !== 0) {
-                convertedArmy[index].Mechs.push(mech.name)
+            let army = convertedArmy[index]
+            if (army && !convertedArmy[index].Mechs) {
+                convertedArmy[index].Mechs = [mech];
+                console.log(convertedArmy);
             }
+           
             else{
-                convertedArmy[index].Mechs = [];
-                convertedArmy[index].Mechs.push(mech.name)
+                convertedArmy[index].Mechs.push(mech)
             }
+            localStorage.setItem("temp", JSON.stringify(convertedArmy));
         }
-        //TODO FIGURE OUT WHY INDEX IS NOT WORKING.
+       
 
     }
     
