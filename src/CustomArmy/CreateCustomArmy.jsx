@@ -68,6 +68,7 @@ export default function CreateCustomArmy ({stockMechArray}) {
 
         }
     }
+    
 
     useEffect(() => {
 
@@ -93,6 +94,7 @@ export default function CreateCustomArmy ({stockMechArray}) {
         setViewCurrentArmyState(true)
         setCurrentArmy(army)
         setCurrentArmyIndex(index)
+       
     }
 
     const addMech = () => {
@@ -118,8 +120,16 @@ export default function CreateCustomArmy ({stockMechArray}) {
             }
             localStorage.setItem("temp", JSON.stringify(convertedArmy));
         }
-       
-
+    }
+    const deleteCompany = (currentArmyIndex) => {
+        const storedArmy = localStorage.getItem("temp")
+        if(storedArmy){
+            const convertedArmy = JSON.parse(storedArmy)
+            convertedArmy.splice(currentArmyIndex, 1)
+            localStorage.setItem("temp", JSON.stringify(convertedArmy));
+            sethasArmies(convertedArmy);
+            setViewCurrentArmyState(false);
+        }
     }
     
     return(
@@ -167,7 +177,7 @@ export default function CreateCustomArmy ({stockMechArray}) {
 
                             <button onClick={() => {setCurrentArmyEditeState(true)}}>Edit Company</button>
                             <button onClick= {addMech}>Add Mechs</button>
-                            <button>Delete Company</button>
+                            <button onClick={() => {deleteCompany(currentArmyIndex)}}>Delete Company</button>
 
                        
                     </div>
