@@ -175,6 +175,15 @@ export default function CreateCustomArmy ({stockMechArray}) {
                             <label htmlFor='armyName'>Army Points: </label>
                             <h3>{currentArmy.BattlePointTotal}</h3>
 
+                            
+
+                            {Array.isArray(currentArmy.Mechs) && (currentArmy.Mechs.length > 0) && (
+                                <>
+                                 <p>Array!</p>
+                                 <p>{currentArmy.Mechs.map(mech => { return <p>{mech.Name}</p> })}</p>
+                                </>
+                            )}
+
                             <button onClick={() => {setCurrentArmyEditeState(true)}}>Edit Company</button>
                             <button onClick= {addMech}>Add Mechs</button>
                             <button onClick={() => {deleteCompany(currentArmyIndex)}}>Delete Company</button>
